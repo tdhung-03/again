@@ -10,7 +10,9 @@ def projects(request):
 
 def project(request, id):
     project = Project.objects.get(id=id)
+    tags = project.tags.all()
     context = {
-        'project': project 
+        'project': project,
+        'tags': tags
     }
     return render(request, "project/project.html", context)
