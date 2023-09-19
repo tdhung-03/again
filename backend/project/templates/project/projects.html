@@ -11,6 +11,8 @@
     {% for project in projects %}
     {{project}}
     <a href="{% url 'project' project.id %}">View</a>
+    <a href="{% url 'edit-project' project.id %}">Edit</a>
+    <a href="{% url 'delete-project' project.id %}">Delete</a>
     {% endfor %}
 </body>
 
