@@ -7,3 +7,10 @@ def projects(request):
         'projects': projects
     }
     return render(request, "project/projects.html", context)
+
+def project(request, id):
+    project = Project.objects.get(id=id)
+    context = {
+        'project': project 
+    }
+    return render(request, "project/project.html", context)
