@@ -8,7 +8,9 @@
 </head>
 
 <body>
-    {{project}}
+    {{project.title}}
+    <p>{{project.description}}</p>
+    <!-- <img src="" alt=""> -->
     {% for tag in tags %}
     {{tag}}
     {% endfor %}

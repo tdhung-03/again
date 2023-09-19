@@ -10,6 +10,7 @@ class Tag(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
+    featured_image = models.ImageField(null=True, blank=True)
     demo_link = models.CharField(max_length=200,null=True, blank=True)
     source_link = models.CharField(max_length=200, null=True, blank=True)
     tags = models.ManyToManyField(Tag, null=True, blank=True)
