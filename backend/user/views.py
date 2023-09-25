@@ -26,8 +26,6 @@ def create_user(request):
     return render(request, "user/create_user.html", context)
 
 def login_user(request):
-    username = ""
-    password = ""
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -35,16 +33,10 @@ def login_user(request):
         if user is not None:
             login(request, user)
             return redirect("projects")
-    context = {
-
-    }
-    return render(request, "user/login_user.html", context)
+    return render(request, "user/login_user.html")
 
 def logout_user(request):
     if request.method == "POST":
         logout(request)
         return redirect("projects")
-    context = {
-
-    }
-    return render(request, "user/logout_user.html", context)
+    return render(request, "user/logout_user.html")
