@@ -19,9 +19,7 @@ def create_user(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            Profile.objects.create(
-                user=user, username=user.username, email=user.email, name=user.first_name)
+            form.save()
             return redirect("projects")
     context = {
         'form': form,
