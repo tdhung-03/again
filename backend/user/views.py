@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
 from .models import Profile
 # Create your views here.
@@ -44,3 +45,12 @@ def logout_user(request):
         logout(request)
         return redirect("projects")
     return render(request, "user/logout_user.html")
+
+
+@login_required(login_url='login')
+def account(request):
+    profile = request.user.profile
+    context = {
+        'profile': profile,
+    }
+    return render(request, "user/account.html", context)
