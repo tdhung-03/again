@@ -10,8 +10,9 @@ def profile(request, id):
     context = {
         'profile': profile,
         'projects': projects,
-    }   
+    }
     return render(request, "user/profile.html", context)
+
 
 def create_user(request):
     form = CustomUserCreationForm()
@@ -25,6 +26,7 @@ def create_user(request):
     }
     return render(request, "user/create_user.html", context)
 
+
 def login_user(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -34,6 +36,7 @@ def login_user(request):
             login(request, user)
             return redirect("projects")
     return render(request, "user/login_user.html")
+
 
 def logout_user(request):
     if request.method == "POST":
