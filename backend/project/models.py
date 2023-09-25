@@ -1,4 +1,5 @@
 from django.db import models
+from user.models import *
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
@@ -8,6 +9,7 @@ class Tag(models.Model):
         return self.name
 
 class Project(models.Model):
+    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=200)
     description = models.TextField()
     featured_image = models.ImageField(null=True, blank=True)

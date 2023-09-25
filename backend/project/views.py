@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+
 def projects(request):
     projects = Project.objects.all()
     context = {
@@ -18,6 +20,7 @@ def project(request, id):
     }
     return render(request, "project/project.html", context)
 
+@login_required(login_url='login')
 def create_project(request):
     form = ProjectForm()
     if request.method == 'POST':

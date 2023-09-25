@@ -8,8 +8,10 @@
 </head>
 
 <body>
+    <a href="{% url 'login' %}">login</a>
+    <a href="{% url 'logout' %}">logout</a>
     {% for project in projects %}
-    {{project}}
+    {{project}} - {{project.owner}}
     <a href="{% url 'project' project.id %}">View</a>
     <a href="{% url 'edit-project' project.id %}">Edit</a>
     <a href="{% url 'delete-project' project.id %}">Delete</a>

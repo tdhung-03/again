@@ -6,9 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    {{profile}}
-    {% for project in projects %}
-    {{project}}
-    {% endfor %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>r u sure to logout?</p>
+        <input type="submit" name="" id="">
+    </form>
 </body>
 </html>
