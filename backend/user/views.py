@@ -25,7 +25,7 @@ def create_user(request):
     context = {
         'form': form,
     }
-    return render(request, "user/create_user.html", context)
+    return render(request, "user/signup.html", context)
 
 
 def login_user(request):
@@ -36,7 +36,7 @@ def login_user(request):
         if user is not None:
             login(request, user)
             return redirect("projects")
-    return render(request, "user/login_user.html")
+    return render(request, "user/login.html")
 
 
 def logout_user(request):
