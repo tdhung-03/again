@@ -24,7 +24,7 @@
   <header class="header">
     <div class="container container--narrow">
       <a href="/" class="header__logo">
-        <img src="images/logo.svg" alt="DevSearch Logo" />
+        <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo" />
       </a>
       <nav class="header__nav">
         <input type="checkbox" id="responsive-menu" />
@@ -36,8 +36,8 @@
           <li class="header__menuItem"><a href="index.html">Developers</a></li>
           <li class="header__menuItem"><a href="projects.html">Projects</a></li>
           <li class="header__menuItem"><a href="inbox.html">Inbox</a></li>
-          <li class="header__menuItem"><a href="account.html">My Account</a></li>
-          <li class="header__menuItem"><a href="login.html" class="btn btn--sub">Login/Sign Up</a></li>
+          <li class="header__menuItem"><a href="{% url 'account' %}">My Account</a></li>
+          <li class="header__menuItem"><a href="{% url 'login' %}" class="btn btn--sub">Login/Sign Up</a></li>
         </ul>
       </nav>
     </div>
@@ -52,9 +52,9 @@
             <div class="card__body dev">
               <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
               <img class="avatar avatar--xl dev__avatar" src="https://avatars.githubusercontent.com/u/33843378" />
-              <h2 class="dev__name">Dennis Ivanov</h2>
-              <p class="dev__title">Expirance FullStack Developer, Youtuber and Instructor</p>
-              <p class="dev__location">Based in Florida, USA</p>
+              <h2 class="dev__name">{{profile.name}}</h2>
+              <p class="dev__title">{{profile.short_intro}}</p>
+              <p class="dev__location">Based in {{profile.location}}</p>
               <ul class="dev__social">
                 <li>
                   <a title="Github" href="#" target="_blank"><i class="im im-github"></i></a>
@@ -80,12 +80,7 @@
           <div class="devInfo">
             <h3 class="devInfo__title">About Me</h3>
             <p class="devInfo__about">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex illum ipsum iusto consequatur. Totam,
-              dolorum fugiat, debitis facere illo nostrum nesciunt maxime, deserunt enim voluptatibus modi natus velit
-              voluptatum. Dicta eritatis exercitationem ut quos a placeat obcaecati? Architecto illum!
-              <br />
-              Amet consectetur adipisicing elit. Veritatis exercitationem ut quos a placeat obcaecati? Architecto
-              illum, atque delectus nemo dolorem inventore ab facilis? Dolor placeat vel delectus ipsam ullam.
+              {{profile.bio}}
             </p>
           </div>
           <div class="settings">

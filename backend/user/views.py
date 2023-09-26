@@ -30,6 +30,8 @@ def create_user(request):
 
 
 def login_user(request):
+    if request.user.is_authenticated:
+        return redirect('account')
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
