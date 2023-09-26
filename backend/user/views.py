@@ -8,7 +8,7 @@ from .models import Profile
 
 def profile(request, id):
     profile = Profile.objects.get(id=id)
-    projects = profile.project_set.all()
+    projects = profile.projects.all()
     context = {
         'profile': profile,
         'projects': projects,

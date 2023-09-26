@@ -12,7 +12,7 @@ class Tag(models.Model):
 
 class Project(models.Model):
     owner = models.ForeignKey(
-        Profile, null=True, blank=True, on_delete=models.DO_NOTHING)
+        Profile, null=True, blank=True, on_delete=models.DO_NOTHING, related_name="projects")
     title = models.CharField(max_length=200)
     description = models.TextField()
     featured_image = models.ImageField(null=True, blank=True)
