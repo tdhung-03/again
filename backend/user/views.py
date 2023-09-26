@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfileForm
 from .models import Profile
 # Create your views here.
 
@@ -54,3 +54,18 @@ def account(request):
         'profile': profile,
     }
     return render(request, "user/account.html", context)
+
+
+@login_required(login_url='login')
+def edit_account(request):
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('account')
+    context = {
+        'form': form,
+    }
+    return render(request, "user/edit_account.html", context)
