@@ -41,10 +41,8 @@ def login_user(request):
 
 
 def logout_user(request):
-    if request.method == "POST":
-        logout(request)
-        return redirect("projects")
-    return render(request, "user/logout_user.html")
+    logout(request)
+    return redirect("login")
 
 
 @login_required(login_url='login')
